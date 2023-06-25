@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/budget_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:layout_alignParentTop="true"/>
+
+    <Button
+        android:id="@+id/add_income_expense_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Income/Expense"
+        android:layout_below="@id/budget_name_input"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
