@@ -14,17 +14,19 @@ import com.example.finaid.R;
 
 import java.util.List;
 
-public class TransactionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
     private List<Transaction> transactionList;
     private Activity activity;
 
-    public TransactionAdapter(Activity activity) {
+    public TransactionAdapter(Activity activity, List<Transaction> transactionList) {
         this.activity = activity;
+        this.transactionList = transactionList;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_view, parent,false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.add_transaction_view, parent,false);
         return new ViewHolder(itemView);
     }
 
@@ -33,17 +35,6 @@ public class TransactionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         final Transaction transaction = transactionList.get(position);
         holder.transactionName.setText(transaction.getName());
         holder.transactionAmount.setText(String.valueOf(transaction.getAmount()));
-    }
-
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView transactionAmount;
-        TextView transactionName;
-
-        ViewHolder(View view) {
-            super(view);
-            transactionAmount = view.findViewById(R.id.your_transaction_amount_id);
-            transactionName = view.findViewById(R.id.your_transaction_name_id);
-        }
     }
 
     @Override
@@ -60,10 +51,11 @@ public class TransactionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView transactionAmount;
         TextView transactionName;
 
+        //ToDO: might be wrong files
         ViewHolder(View view) {
             super(view);
-            transactionAmount = view.findViewById(R.id.);
-            transactionName = view.findViewById(R.id.your_transaction_name_id);
+            transactionAmount = view.findViewById(R.id.tags);
+            transactionName = view.findViewById(R.id.amount);
         }
     }
 }

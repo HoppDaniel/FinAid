@@ -1,7 +1,6 @@
 package com.example.FinAid.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.FinAid.activity.BudgetActivity;
 import com.example.FinAid.model.Budget;
 import com.example.finaid.R;
 
@@ -20,7 +18,7 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.BudgetView
 
     private List<Budget> budgetList;
     private Context context;
-    private OnItemClickListener listener;  // add this line
+    private OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onItemClick(Budget budget);
@@ -32,7 +30,7 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.BudgetView
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;  // update this method
+        this.listener = listener;
     }
 
     @NonNull
@@ -44,7 +42,15 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.BudgetView
 
     @Override
     public void onBindViewHolder(@NonNull BudgetViewHolder holder, int position) {
+        Budget budget = budgetList.get(position);
+        holder.budgetName.setText(budget.getName());
+        holder.budgetTotalAmount.setText(String.valueOf(budget.getTotalAmount()));
 
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(budget);
+            }
+        });
     }
 
     class BudgetViewHolder extends RecyclerView.ViewHolder {
@@ -54,21 +60,11 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.BudgetView
         BudgetViewHolder(View itemView) {
             super(itemView);
             budgetName = itemView.findViewById(R.id.budgetName);
-            budgetTotalAmount = itemView.findViewById(R.id.budgetTotalAmount);
-        }
-
-        void bind(Budget budget) {
-            budgetName.setText(budget.getName());
-            budgetTotalAmount.setText(String.valueOf(budget.getTotalAmount()));
         }
     }
-
 
     @Override
     public int getItemCount() {
         return budgetList.size();
     }
-
-
-
 }
