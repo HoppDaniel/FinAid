@@ -1,21 +1,45 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity.BudgetActivity">
 
-    <Button
-        android:id="@+id/add_expense_income_button"
+    <TextView
+        android:id="@+id/budgetTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Expense or Income"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Budget A"
+        android:textSize="24sp"
+        android:layout_marginTop="24dp"/>
 
     <Button
-        android:id="@+id/details_button"
+        android:id="@+id/addTransactionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Details"
-        android:layout_below="@id/add_expense_income_button"
-        android:layout_centerHorizontal="true"/>
+        android:text="Add Transaction"
+        android:layout_below="@+id/budgetTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"/>
+
+    <Button
+        android:id="@+id/detailsDiagramButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details Diagram"
+        android:layout_below="@+id/addTransactionButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"/>
+
+    <Button
+        android:id="@+id/detailsListButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details List"
+        android:layout_below="@+id/detailsDiagramButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"/>
 
 </RelativeLayout>
